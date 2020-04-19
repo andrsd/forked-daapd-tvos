@@ -1,0 +1,21 @@
+<document>
+  <stackTemplate>
+    <banner>
+    </banner>
+    <collectionList>
+      <grid style="padding: 50; tv-interitem-spacing: 50; tv-line-spacing: 30">
+        <header>
+          <title>All ({{ total }})</title>
+        </header>
+        <section>
+          {{#each items}}
+            <monogramLockup data-href-page="artist-albums" data-href-page-options="{{toJSON this }}">
+              <monogram />
+              <title>{{ name }}</title>
+            </monogramLockup>
+          {{/each}}
+        </section>
+      </grid>
+    </collectionList>
+  </stackTemplate>
+</document>

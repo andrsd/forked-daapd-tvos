@@ -1,0 +1,36 @@
+<document>
+  <stackTemplate>
+    <collectionList>
+      {{#if recent}}
+      <shelf>
+        <header>
+          <title>Recently added</title>
+        </header>
+        <section>
+          {{#each recent.items}}
+            <lockup data-href-page="album-tracks" data-href-page-options="{{toJSON this }}">
+              <img src="{{artworkUrl artwork_url }}" style="width: 295; height: 295"/>
+              <title>{{ name }}</title>
+              <description class="current-show" style="font-size:27%; margin-top:10; text-align: center">{{ artist }}</description>
+            </lockup>
+          {{/each}}
+        </section>
+      </shelf>
+      {{/if}}
+      <grid>
+        <header>
+          <title>Albums ({{ all.total }})</title>
+        </header>
+        <section>
+          {{#each all.items}}
+            <lockup data-href-page="album-tracks" data-href-page-options="{{toJSON this }}">
+              <img src="{{artworkUrl artwork_url }}" style="width: 295; height: 295"/>
+              <title>{{ name }}</title>
+              <description class="current-show" style="font-size:27%; margin-top:10; text-align: center">{{ artist }}</description>
+            </lockup>
+          {{/each}}
+        </section>
+      </grid>
+    </collectionList>
+  </stackTemplate>
+</document>

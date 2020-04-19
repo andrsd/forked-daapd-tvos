@@ -1,0 +1,63 @@
+<collectionList style="padding-top: 30; margin-top: -30">
+  {{#if albums}}
+  <shelf>
+    <header>
+      <title>Albums</title>
+    </header>
+    <section>
+      {{#each albums }}
+      <lockup data-href-page="album-tracks" data-href-page-options="{{toJSON this }}">
+        <img src="{{artworkUrl artwork_url}}" width="290" height="290" />
+        <title>{{ name }}</title>
+      </lockup>
+      {{/each}}
+    </section>
+  </shelf>
+  {{/if}}
+  {{#if audiobooks}}
+  <shelf>
+    <header>
+      <title>Audiobooks</title>
+    </header>
+    <section>
+      {{#each audiobooks }}
+      <lockup data-href-page="album-tracks" data-href-page-options="{{toJSON this }}">
+        <img src="{{artworkUrl artwork_url}}" width="290" height="290" />
+        <title>{{ name }}</title>
+        <subtitle>{{ artist }}</subtitle>
+      </lockup>
+      {{/each}}
+    </section>
+  </shelf>
+  {{/if}}
+  {{#if tracks}}
+  <shelf>
+    <header>
+      <title>Tracks</title>
+    </header>
+    <section>
+      {{#each tracks }}
+      <lockup data-href-page="track" data-href-page-options="{{toJSON this }}">
+        <img src="{{artworkUrl artwork_url}}" width="290" height="290" />
+        <title>{{ title }}</title>
+      </lockup>
+      {{/each}}
+    </section>
+  </shelf>
+  {{/if}}
+  {{#if artists}}
+  <shelf>
+    <header>
+      <title>Artists</title>
+    </header>
+    <section>
+      {{#each artists }}
+      <lockup data-href-page="artist-albums" data-href-page-options="{{toJSON this }}">
+        <img src="{{artworkUrl artwork_url}}" width="290" height="290" />
+        <title>{{ name }}</title>
+      </lockup>
+      {{/each}}
+    </section>
+  </shelf>
+  {{/if}}
+</collectionList>

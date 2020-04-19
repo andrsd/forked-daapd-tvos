@@ -1,0 +1,57 @@
+{
+  "name": "daap-client-tvos",
+  "version": "1.0.0",
+  "description": "DAAP client",
+  "main": "index.js",
+  "scripts": {
+    "install-deps": "npx yarn@$npm_package_engines_yarn install --frozen-lockfile --check-files",
+    "build": "webpack --progress",
+    "serve": "webpack-dev-server",
+    "dist": "NODE_ENV=production webpack --progress"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/andrsd/daap-client-tvos.git"
+  },
+  "keywords": [
+    "appletv",
+    "tvml",
+    "app",
+    "tvjs",
+    "atvjs",
+    "appletv",
+    "tvmlkit",
+    "daap",
+    "music"
+  ],
+  "author": "David Andrš",
+  "license": "",
+  "bugs": {
+    "url": "https://github.com/andrsd/daap-client-tvos/issues"
+  },
+  "homepage": "https://github.com/andrsd/daap-client-tvos#readme",
+  "devDependencies": {
+    "@babel/core": "^7.5.4",
+    "@babel/preset-env": "^7.5.4",
+    "babel-loader": "^8.0.6",
+    "copy-webpack-plugin": "^5.0.3",
+    "eslint": "^6.0.1",
+    "eslint-config-standard": "^12.0.0",
+    "eslint-plugin-import": "^2.18.0",
+    "eslint-plugin-node": "^9.1.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-standard": "^4.0.0",
+    "handlebars-loader": "^1.7.1",
+    "raw-loader": "^3.0.0",
+    "webpack": "^4.35.3",
+    "webpack-cli": "^3.3.5",
+    "webpack-dev-server": "^3.7.2"
+  },
+  "dependencies": {
+    "atvjs": "^0.2.9",
+    "fast-xml-parser": "^3.12.16",
+    "handlebars": "^4.1.2",
+    "spotify-web-api-node": "^4.0.0",
+    "string-strip-html": "^4.3.17"
+  }
+}

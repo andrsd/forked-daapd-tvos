@@ -1,0 +1,11 @@
+<grid>
+  <section>
+    {{#each albums }}
+    <lockup data-href-page="album-tracks" data-href-page-options="{{toJSON this }}">
+      <img src="{{artworkUrl artwork_url}}" width="350" height="350" />
+      <title>{{ name }}</title>
+      <subtitle>{{ artist }}</subtitle>
+    </lockup>
+    {{/each}}
+  </section>
+</grid>

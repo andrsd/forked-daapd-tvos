@@ -1,0 +1,45 @@
+<document>
+  <compilationTemplate>
+    <list>
+      <relatedContent>
+        <itemBanner>
+          <heroImg src="{{artworkUrl info.artwork_url }}"/>
+          <row>
+            <buttonLockup id="play-btn">
+              <badge src="resource://button-play" />
+              <title>Play</title>
+            </buttonLockup>
+            <buttonLockup id="add-btn">
+              <badge src="resource://button-add" />
+              <title>Add</title>
+            </buttonLockup>
+            <buttonLockup id="artist-btn">
+              <badge src="" />
+              <title>Artist</title>
+            </buttonLockup>
+            <buttonLockup id="more-btn">
+              <badge src="resource://button-more" />
+              <title>More</title>
+            </buttonLockup>
+          </row>
+        </itemBanner>
+      </relatedContent>
+      <header>
+        <title>{{ info.name }}</title>
+        <text>{{ info.artist }}</text>
+        <row>
+          <text>{{trackCount info.track_count }}</text>
+        </row>
+      </header>
+      <section>
+        {{#each tracks}}
+        <listItemLockup data-href-page="" data-href-page-options="{{toJSON this }}">
+          <ordinal minLength="2">{{ track_number }}</ordinal>
+          <title>{{ title }}</title>
+          <decorationLabel>{{trackLength length_ms}}</decorationLabel>
+        </listItemLockup>
+        {{/each}}
+      </section>
+    </list>
+  </compilationTemplate>
+</document>

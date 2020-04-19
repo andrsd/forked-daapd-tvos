@@ -1,0 +1,23 @@
+<document>
+  <stackTemplate>
+    <banner>
+      <title>{{ artist_name}}</title>
+    </banner>
+    <collectionList>
+      <grid>
+        <header>
+          <title>Albums ({{ total }})</title>
+        </header>
+        <section>
+          {{#each items}}
+            <lockup data-href-page="album-tracks" data-href-page-options="{{toJSON this }}">
+              <img src="{{artworkUrl artwork_url }}" style="width: 295; height: 295"/>
+              <title>{{ name }}</title>
+              <description class="current-show" style="font-size:27%; margin-top:10; text-align: center">{{ artist }}</description>
+            </lockup>
+          {{/each}}
+        </section>
+      </grid>
+    </collectionList>
+  </stackTemplate>
+</document>

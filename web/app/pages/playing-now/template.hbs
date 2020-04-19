@@ -1,0 +1,40 @@
+<document>
+  <divTemplate>
+      <background>
+        <img src="" />
+      </background>
+      <shelf centered="true" autoHighlight="true">
+        <section>
+          {{#each queue}}
+          <lockup style="padding: 20">
+            <img src="{{artworkUrl artwork_url}}" width="400" height="400" />
+          </lockup>
+          {{/each}}
+        </section>
+      </shelf>
+        <row style="tv-align: center">
+          <text id='title' style="font-size: 20; color: #fff">{{ current.title }}</text>
+        </row>
+        <row style="tv-align: center">
+          <text id='artist' style="font-size: 20; color: #fff">{{ current.artist }}</text>
+        </row>
+        <row style="tv-align: center">
+          <text id='album' style="font-size: 20; color: #fff">{{ current.album }}</text>
+        </row>
+        <progressBar value="0.3" style="margin: 50 100 50 100; tv-tint-color: #fff; tv-tint-color2x: black"/>
+      <row style="tv-align: center">
+        <buttonLockup id="prev-btn" style="padding: 20">
+          <badge src="" />
+          <text>Prev</text>
+        </buttonLockup>
+        <buttonLockup id="play-btn" style="margin: 40">
+          <badge src="" />
+          <text>Play</text>
+        </buttonLockup>
+        <buttonLockup id="next-btn" style="padding: 20">
+          <badge src="" />
+          <text>Next</text>
+        </buttonLockup>
+      </row>
+  </divTemplate>
+</document>
