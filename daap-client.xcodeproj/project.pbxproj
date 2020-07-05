@@ -40,7 +40,6 @@
 		0230DF6924426EDD00A5F630 /* GCDWebServerFileRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 0230DF4A24426EDD00A5F630 /* GCDWebServerFileRequest.m */; };
 		0230DF6A24426EDD00A5F630 /* GCDWebServerURLEncodedFormRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 0230DF4B24426EDD00A5F630 /* GCDWebServerURLEncodedFormRequest.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0230DF6B24426EDD00A5F630 /* GCDWebServers.h in Headers */ = {isa = PBXBuildFile; fileRef = 0230DF4C24426EDD00A5F630 /* GCDWebServers.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		0230DF6F24426F2D00A5F630 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0230DF6E24426F2D00A5F630 /* MobileCoreServices.framework */; };
 		0230DF7124426F3600A5F630 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0230DF7024426F3600A5F630 /* UIKit.framework */; };
 		0230DF7324426F3E00A5F630 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 0230DF7224426F3E00A5F630 /* libz.tbd */; };
 		0230DF7524426F4700A5F630 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0230DF7424426F4700A5F630 /* CFNetwork.framework */; };
@@ -142,7 +141,6 @@
 				0230DF7524426F4700A5F630 /* CFNetwork.framework in Frameworks */,
 				0230DF7324426F3E00A5F630 /* libz.tbd in Frameworks */,
 				0230DF7124426F3600A5F630 /* UIKit.framework in Frameworks */,
-				0230DF6F24426F2D00A5F630 /* MobileCoreServices.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
