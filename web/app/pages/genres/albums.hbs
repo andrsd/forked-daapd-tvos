@@ -2,7 +2,11 @@
   <section>
     {{#each albums }}
     <lockup data-href-page="album-tracks" data-href-page-options="{{toJSON this }}">
+      {{#if artwork_url}}
       <img src="{{artworkUrl artwork_url}}" width="350" height="350" />
+      {{else}}
+      <img src="" width="350" height="350" />
+      {{/if}}
       <title>{{ name }}</title>
       <subtitle>{{ artist }}</subtitle>
     </lockup>
