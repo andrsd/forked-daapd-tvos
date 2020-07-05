@@ -80,7 +80,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		0230732724426B080048D23C /* daap-client.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "daap-client.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		0230732724426B080048D23C /* forked-daapd.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "forked-daapd.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0230732A24426B080048D23C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0230732D24426B080048D23C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0230733224426B080048D23C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -161,7 +161,7 @@
 		0230732824426B080048D23C /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				0230732724426B080048D23C /* daap-client.app */,
+				0230732724426B080048D23C /* forked-daapd.app */,
 				0230DF1E24426E8600A5F630 /* GCDWebServers.framework */,
 			);
 			name = Products;
@@ -313,7 +313,7 @@
 			);
 			name = "daap-client";
 			productName = "daap-client";
-			productReference = 0230732724426B080048D23C /* daap-client.app */;
+			productReference = 0230732724426B080048D23C /* forked-daapd.app */;
 			productType = "com.apple.product-type.application";
 		};
 		0230DF1D24426E8600A5F630 /* GCDWebServers */ = {
@@ -565,7 +565,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "name.andrs.tvos.daap-client";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "forked-daapd";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 3;
 			};
@@ -583,7 +583,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "name.andrs.tvos.daap-client";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "forked-daapd";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 3;
 			};
