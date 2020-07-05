@@ -75,3 +75,6 @@ fastlane/screenshots
 fastlane/test_output
 
 tmp/
+
+coverage/
+.nyc_output/
