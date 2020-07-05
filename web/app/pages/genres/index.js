@@ -1,13 +1,15 @@
 import ATV from 'atvjs'
 import template from './template.hbs'
 import albumsTpl from './albums.hbs'
+import context_menu from './context-menu.hbs'
 import API from 'lib/api.js'
 
 const GenresPage = ATV.Page.create({
   name: 'genres',
   template: template,
   events: {
-    highlight: 'onHighlight'
+    highlight: 'onHighlight',
+    holdselect: 'onHoldSelect'
   },
   ready (options, resolve, reject) {
     API
@@ -63,7 +65,48 @@ const GenresPage = ATV.Page.create({
         // error
         reject()
       })
-  }
+  },
+  onHoldSelect(e) {
+    let element = e.target
+    let elementType = element.nodeName
+
+    if (elementType === 'lockup') {
+      var album = JSON.parse(element.getAttribute("data-href-page-options"))
+      var doc = ATV.Navigation.presentModal({
+        template: context_menu,
+        data: {
+          album: album.name,
+          artist: album.artist
+        }
+      })
+
+      doc
+        .getElementById('add-btn')
+        .addEventListener('select', () => {
+          API
+            .post(API.url.queueAddItems([album.uri]))
+            .then(() => {
+              ATV.Navigation.dismissModal()
+            })
+        })
+      doc
+        .getElementById('play-btn')
+        .addEventListener('select', () => {
+          API
+            .put(API.url.queueClear())
+            .then(() => {
+              return API.post(API.url.queueAddItems([album.uri]))
+            })
+            .then(() => {
+              return API.put(API.url.playerPlay())
+            })
+            .then(() => {
+              ATV.Navigation.dismissModal()
+              return true
+            })
+        })
+    }
+  },
 })
 
 export default GenresPage

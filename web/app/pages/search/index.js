@@ -3,6 +3,7 @@ import ATV from 'atvjs'
 import template from './template.hbs'
 import searchTpl from './search.hbs'
 import noResultsTpl from './noresults.hbs'
+import context_menu from './context-menu.hbs'
 
 import API from 'lib/api.js'
 
@@ -56,6 +57,9 @@ function buildResults(doc, searchText) {
 const SearchPage = ATV.Page.create({
   name: 'search',
   template: template,
+  events: {
+    holdselect: 'onHoldSelect'
+  },
   afterReady(doc) {
     let searchField = doc.getElementsByTagName('searchField').item(0);
     let keyboard = searchField && searchField.getFeature('Keyboard');
@@ -67,7 +71,65 @@ const SearchPage = ATV.Page.create({
         buildResults(doc, searchText);
       };
     }
-  }
+  },
+  onHoldSelect(e) {
+    let element = e.target
+    let elementType = element.nodeName
+
+    if (elementType === 'lockup') {
+      var item = JSON.parse(element.getAttribute("data-href-page-options"))
+      var data
+
+      if ('name' in item && 'artist' in item) {
+        data = {
+          title: item.name,
+          subtitle: item.artist
+        }
+      }
+      else if ('name' in item) {
+        data = {
+          title: item.name
+        }
+      }
+      else if ('artist' in item && 'album' in item) {
+        data = {
+          title: item.title,
+          subtitle: item.artist
+        }
+      }
+
+      var doc = ATV.Navigation.presentModal({
+        template: context_menu,
+        data: data
+      })
+
+      doc
+        .getElementById('add-btn')
+        .addEventListener('select', () => {
+          API
+            .post(API.url.queueAddItems([item.uri]))
+            .then(() => {
+              ATV.Navigation.dismissModal()
+            })
+        })
+      doc
+        .getElementById('play-btn')
+        .addEventListener('select', () => {
+          API
+            .put(API.url.queueClear())
+            .then(() => {
+              return API.post(API.url.queueAddItems([item.uri]))
+            })
+            .then(() => {
+              return API.put(API.url.playerPlay())
+            })
+            .then(() => {
+              ATV.Navigation.dismissModal()
+              return true
+            })
+        })
+    }
+  },
 })
 
 export default SearchPage
