@@ -1,5 +1,6 @@
 import ATV from 'atvjs'
 import template from './template.hbs'
+import context_menu from './context-menu.hbs'
 import API from 'lib/api.js'
 
 const AlbumTracksPage = ATV.Page.create({
@@ -114,9 +115,23 @@ const AlbumTracksPage = ATV.Page.create({
 
     if (elementType === 'listItemLockup') {
       var track = JSON.parse(element.getAttribute("data-href-page-options"))
-      ATV.Navigation.navigate('track-context-menu', {
-        track: track
+      var doc = ATV.Navigation.presentModal({
+        template: context_menu,
+        data: {
+          album: track.album,
+          title: track.title
+        }
       })
+
+      doc
+        .getElementById('add-btn')
+        .addEventListener('select', () => {
+          API
+            .post(API.url.queueAddItems([track.uri]))
+            .then(() => {
+              ATV.Navigation.dismissModal()
+            })
+        })
     }
   },
 })
