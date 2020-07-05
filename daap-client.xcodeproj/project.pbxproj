@@ -286,7 +286,7 @@
 			buildPhases = (
 			);
 			buildToolPath = /usr/local/bin/npm;
-			buildWorkingDirectory = "/Users/andrsd/devel/daap-client";
+			buildWorkingDirectory = "";
 			dependencies = (
 			);
 			name = dist;
