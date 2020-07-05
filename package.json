@@ -8,8 +8,8 @@
     "build": "webpack --progress",
     "serve": "webpack-dev-server",
     "dist": "NODE_ENV=production webpack --progress",
-    "test": "./node_modules/.bin/mocha test --timeout 0 --exit",
-    "coverage": "npx nyc --reporter=json npm test"
+    "test": "./node_modules/.bin/mocha test --timeout 0 --exit --require @babel/register",
+    "coverage": "npx nyc --reporter=html npm test"
   },
   "repository": {
     "type": "git",
@@ -35,6 +35,7 @@
   "devDependencies": {
     "@babel/core": "^7.5.4",
     "@babel/preset-env": "^7.5.4",
+    "@babel/register": "^7.10.4",
     "babel-loader": "^8.0.6",
     "chai": "^4.2.0",
     "copy-webpack-plugin": "^5.0.3",
