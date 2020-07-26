@@ -1,5 +1,5 @@
 
-const BASE_URL = 'http://10.0.0.1:3689'
+const BASE_URL = 'http://forked-daapd.local:3689'
 const BASE_API_URL = `${BASE_URL}/api`
 
 function request(url, method) {
