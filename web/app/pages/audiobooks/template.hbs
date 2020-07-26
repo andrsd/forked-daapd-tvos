@@ -1,12 +1,32 @@
 <document>
   <stackTemplate>
     <collectionList>
-      <grid>
+      {{#if recent}}
+      <shelf>
         <header>
-          <title>Audiobooks ({{ total }})</title>
+          <title>Recently added</title>
         </header>
         <section>
-          {{#each items}}
+          {{#each recent.items}}
+            <lockup data-href-page="album-tracks" data-href-page-options="{{toJSON this }}">
+              {{#if artwork_url}}
+              <img src="{{artworkUrl artwork_url }}" class="square"/>
+              {{else}}
+              <img src="" class="square"/>
+              {{/if}}
+              <title>{{ name }}</title>
+              <description class="current-show" style="font-size:27%; margin-top:10; text-align: center">{{ artist }}</description>
+            </lockup>
+          {{/each}}
+        </section>
+      </shelf>
+      {{/if}}
+      <grid>
+        <header>
+          <title>Audiobooks ({{ all.total }})</title>
+        </header>
+        <section>
+          {{#each all.items}}
             <lockup data-href-page="album-tracks" data-href-page-options="{{toJSON this }}">
               {{#if artwork_url}}
               <img src="{{artworkUrl artwork_url }}" class="square"/>

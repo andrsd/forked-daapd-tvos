@@ -10,11 +10,21 @@ const AudiobooksPage = ATV.Page.create({
     holdselect: 'onHoldSelect'
   },
   ready (options, resolve, reject) {
-    API
-      .get(API.url.audiobooks())
-      .then((xhr) => {
-        var res = xhr.response
-        resolve(res.albums)
+    var allAudiobooks = API.get(API.url.audiobooks())
+    var recentAudiobooks = API.get(API.url.search({
+      type: 'album',
+      expression: "media_kind is audiobook and time_added after 8 weeks ago order by time_added desc"
+    }))
+
+    Promise
+      .all([allAudiobooks, recentAudiobooks])
+      .then((xhrs) => {
+        var obj = {
+          all: xhrs[0].response.albums
+        }
+        if (xhrs[1].response.albums.total > 0)
+          obj.recent = xhrs[1].response.albums
+        resolve(obj)
       }, (xhr) => {
         ATV.Navigation.showError({
           data: {
