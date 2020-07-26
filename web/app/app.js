@@ -3,6 +3,7 @@
 
 import ATV from 'atvjs'
 
+import API from 'lib/api.js'
 // template helpers
 import 'lib/template-helpers'
 // raw css string
@@ -76,6 +77,7 @@ ATV.start({
     }
   },
   onLaunch (options) {
+    API.setBaseUrl('http://10.0.0.1:3689')
     ATV.Menu.setOptions({
       loadingMessage: 'Loading'
     })
