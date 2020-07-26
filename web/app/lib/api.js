@@ -1,11 +1,6 @@
 
-var BASE_URL
-var BASE_API_URL
-
-function setBaseUrl(url) {
-  BASE_URL = url
-  BASE_API_URL = `${BASE_URL}/api`
-}
+const BASE_URL = 'http://10.0.0.1:3689'
+const BASE_API_URL = `${BASE_URL}/api`
 
 function request(url, method) {
   return new Promise((resolve, reject) => {
@@ -116,7 +111,6 @@ const url = {
 }
 
 export default {
-  setBaseUrl,
   get,
   put,
   post,
