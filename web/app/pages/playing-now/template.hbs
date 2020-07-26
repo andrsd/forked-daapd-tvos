@@ -1,43 +1,41 @@
 <document>
   <divTemplate>
-      <background>
-        <img src="" />
-      </background>
-      <shelf centered="true" autoHighlight="true">
+      <shelf style="margin-left: 725">
         <section>
           {{#each queue}}
           <lockup style="padding: 20">
             {{#if artwork_url}}
-            <img src="{{artworkUrl artwork_url}}" width="400" height="400" />
+            <img src="{{artworkUrl artwork_url}}" width="450" height="450" />
             {{else}}
-            <img src="" width="400" height="400" />
+            <img src="" width="450" height="450" />
             {{/if}}
           </lockup>
           {{/each}}
         </section>
       </shelf>
-        <row style="tv-align: center">
-          <text id='title' style="font-size: 20; color: #fff">{{ current.title }}</text>
-        </row>
-        <row style="tv-align: center">
-          <text id='artist' style="font-size: 20; color: #fff">{{ current.artist }}</text>
-        </row>
-        <row style="tv-align: center">
-          <text id='album' style="font-size: 20; color: #fff">{{ current.album }}</text>
-        </row>
-        <progressBar value="0.3" style="margin: 50 100 50 100; tv-tint-color: #fff; tv-tint-color2x: black"/>
       <row style="tv-align: center">
-        <buttonLockup id="prev-btn" style="padding: 20">
-          <badge src="" />
-          <text>Prev</text>
+        <text id='title' style="font-size: 30; font-weight: bold; color: #fff">{{ current.title }}</text>
+      </row>
+      <row style="tv-align: center">
+        <text id='artist' style="font-size: 28; color: #ccc">{{ current.artist }}</text>
+      </row>
+      <row style="tv-align: center">
+        <text id='album' style="font-size: 28; color: #ccc">{{ current.album }}</text>
+      </row>
+      <organizer style="width: 1000; tv-align: center; padding: 50 0">
+        <text id="current-time" style="font-size: 28; color: #ccc; tv-position: left; tv-align: right">{{formatTime player.item_progress_ms }}</text>
+        <progressBar id="progress" value="{{ player.progress }}" style="tv-position: center; margin: 0 30"/>
+        <text id="total-time" style="font-size: 28; color: #ccc; tv-position: right; tv-align: right">{{formatTime player.item_length_ms }}</text>
+      </organizer>
+      <row style="tv-align: center; tv-interitem-spacing: 20">
+        <buttonLockup id="prev-btn">
+          <badge src="{{asset_url 'img/prev.png'}}" width="96" height="96" />
         </buttonLockup>
-        <buttonLockup id="play-btn" style="margin: 40">
-          <badge src="" />
-          <text>Play</text>
+        <buttonLockup id="play-btn">
+          {{{ player_state_badge }}}
         </buttonLockup>
-        <buttonLockup id="next-btn" style="padding: 20">
-          <badge src="" />
-          <text>Next</text>
+        <buttonLockup id="next-btn">
+          <badge src="{{asset_url 'img/next.png'}}" width="96" height="96" />
         </buttonLockup>
       </row>
   </divTemplate>
