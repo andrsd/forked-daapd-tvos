@@ -15,10 +15,10 @@ const PlayingNowPage = ATV.Page.create({
       .then((xhrs) => {
         this.player = xhrs[0].response
         this.player.progress = this.player.item_progress_ms / this.player.item_length_ms
-        var queue = xhrs[1].response.items
+        this.queue = xhrs[1].response.items
         var active_queue = []
         var current
-        for (var it of queue) {
+        for (var it of this.queue) {
           if (it.id == this.player.item_id)
             current = it
           if (typeof current !== 'undefined')
@@ -83,12 +83,32 @@ const PlayingNowPage = ATV.Page.create({
       API
         .get(API.url.player ())
         .then((xhr) => {
+          this.player = xhr.response
           doc
             .getElementById('current-time')
-            .innerHTML = TH.helpers.formatTime(xhr.response.item_progress_ms)
+            .innerHTML = TH.helpers.formatTime(this.player.item_progress_ms)
           doc
             .getElementById('progress')
-            .setAttribute("value", xhr.response.item_progress_ms / xhr.response.item_length_ms)
+            .setAttribute("value", this.player.item_progress_ms / this.player.item_length_ms)
+          doc
+            .getElementById('play-btn')
+            .innerHTML = this.playerStateBadge(this.player.state)
+
+          if (this.queue)
+            for (const item of this.queue) {
+              if (item.id == this.player.item_id) {
+                doc
+                  .getElementById('title')
+                  .innerHTML = item.title
+                doc
+                  .getElementById('artist')
+                  .innerHTML = item.artist
+                doc
+                  .getElementById('album')
+                  .innerHTML = item.album
+                break
+              }
+            }
           return true
         })
     }, 1000)
@@ -105,7 +125,8 @@ const PlayingNowPage = ATV.Page.create({
       return '<badge src="' + TH.assetUrl('img/pause.png') + '" width="96" height="96" />'
     else
       return '<badge src="' + TH.assetUrl('img/play.png') + '" width="96" height="96" />'
-  }
+  },
+  queue: null
 })
 
 export default PlayingNowPage
