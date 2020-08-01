@@ -1,6 +1,6 @@
 {
   "name": "daap-client-tvos",
-  "version": "1.0.0",
+  "version": "2020.08.01",
   "description": "DAAP client",
   "main": "index.js",
   "scripts": {
