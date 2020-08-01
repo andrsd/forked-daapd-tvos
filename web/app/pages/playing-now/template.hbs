@@ -27,7 +27,7 @@
         <progressBar id="progress" value="{{ player.progress }}" style="tv-position: center; margin: 0 30"/>
         <text id="total-time" style="font-size: 28; color: #ccc; tv-position: right; tv-align: right">{{formatTime player.item_length_ms }}</text>
       </organizer>
-      <row style="tv-align: center; tv-interitem-spacing: 20">
+      <row style="tv-interitem-spacing: 20; margin-left: 725">
         <buttonLockup id="prev-btn">
           <badge src="{{asset_url 'img/prev.png'}}" width="96" height="96" />
         </buttonLockup>
@@ -36,6 +36,9 @@
         </buttonLockup>
         <buttonLockup id="next-btn">
           <badge src="{{asset_url 'img/next.png'}}" width="96" height="96" />
+        </buttonLockup>
+        <buttonLockup id="output-btn" style="margin-left: 150">
+          <badge src="{{asset_url 'img/sources.png'}}" width="96" height="96" />
         </buttonLockup>
       </row>
   </divTemplate>

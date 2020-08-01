@@ -80,7 +80,13 @@ const PlayingNowPage = ATV.Page.create({
               .setAttribute("value", xhr.response.item_progress_ms / xhr.response.item_length_ms)
         }, (xhr) => {
         })
-    }, 1000);
+    }, 1000)
+
+    doc
+      .getElementById('output-btn')
+      .addEventListener('select', () => {
+        ATV.Navigation.navigate('outputs')
+      })
   },
   player: null,
   playerStateBadge(state) {

@@ -20,6 +20,7 @@ import ArtistAlbumsPage from 'pages/artist-albums'
 import GenresPage from 'pages/genres'
 import AudiobooksPage from 'pages/audiobooks'
 import SearchPage from 'pages/search'
+import OutputsPage from 'pages/outputs'
 
 ATV.start({
   style: css,

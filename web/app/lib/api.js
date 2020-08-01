@@ -2,7 +2,7 @@
 const BASE_URL = 'http://forked-daapd.local:3689'
 const BASE_API_URL = `${BASE_URL}/api`
 
-function request(url, method) {
+function request(url, method, params) {
   return new Promise((resolve, reject) => {
     let xhr = new XMLHttpRequest()
     xhr.responseType = 'json'
@@ -11,34 +11,37 @@ function request(url, method) {
     xhr.setRequestHeader('Content-Type', 'application/json')
     // listen to the state change
     xhr.onreadystatechange = () => {
-        if (xhr.readyState !== 4) {
-            return
-        }
+      if (xhr.readyState !== 4) {
+        return
+      }
 
-        if (xhr.status >= 200 && xhr.status <= 300) {
-            resolve(xhr)
-        } else {
-            reject(xhr)
-        }
+      if (xhr.status >= 200 && xhr.status <= 300) {
+        resolve(xhr)
+      } else {
+        reject(xhr)
+      }
     }
     // error handling
     xhr.addEventListener('error', () => reject(xhr))
     xhr.addEventListener('abort', () => reject(xhr))
     // send request
-    xhr.send()
+    if (params === null)
+      xhr.send()
+    else
+      xhr.send(JSON.stringify(params))
   })
 }
 
-function get(url) {
-  return request(url, 'GET')
+function get(url, params = null) {
+  return request(url, 'GET', params)
 }
 
-function put(url) {
-  return request(url, 'PUT')
+function put(url, params = null) {
+  return request(url, 'PUT', params)
 }
 
-function post(url) {
-  return request(url, 'POST')
+function post(url, params = null) {
+  return request(url, 'POST', params)
 }
 
 const url = {
@@ -107,6 +110,12 @@ const url = {
   },
   artworkUrl (url) {
     return `${BASE_URL}${url}`
+  },
+  outputs () {
+    return `${BASE_API_URL}/outputs`
+  },
+  output (id) {
+    return `${BASE_API_URL}/outputs/${id}`
   }
 }
 
