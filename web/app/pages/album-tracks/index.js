@@ -2,6 +2,7 @@ import ATV from 'atvjs'
 import template from './template.hbs'
 import context_menu from './context-menu.hbs'
 import API from 'lib/api.js'
+import TH from 'lib/template-helpers.js'
 
 const AlbumTracksPage = ATV.Page.create({
   name: 'album-tracks',
@@ -23,6 +24,11 @@ const AlbumTracksPage = ATV.Page.create({
       .then((xhrs) => {
         this.album = xhrs[0].response
         this.tracks = xhrs[1].response.items
+
+        if ('artwork_url' in this.album)
+          this.album.artwork_url = TH.helpers.artworkUrl(this.album.artwork_url)
+        else
+          this.album.artwork_url = TH.helpers.assetUrl('img/album.png')
 
         resolve({
           info: this.album,

@@ -4,7 +4,7 @@ import API from './api.js'
 
 const _ = ATV._
 
-function assetUrl (name) {
+function asset_url (name) {
   return `${ATV.launchOptions.BASEURL}assets/${name}`
 }
 
@@ -18,8 +18,8 @@ const helpers = {
     }
     return str
   },
-  asset_url (asset) {
-    return new Handlebars.SafeString(assetUrl(asset))
+  assetUrl (asset) {
+    return new Handlebars.SafeString(asset_url(asset))
   },
   fullImageURL (imageURL) {
     return new Handlebars.SafeString(imageURL)
@@ -58,5 +58,5 @@ _.each(helpers, (fn, name) => Handlebars.registerHelper(name, fn))
 
 export default {
   helpers,
-  assetUrl
+  asset_url
 }

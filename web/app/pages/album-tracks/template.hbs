@@ -3,11 +3,7 @@
     <list>
       <relatedContent>
         <itemBanner>
-          {{#if artwork_url}}
-          <heroImg src="{{artworkUrl info.artwork_url }}"/>
-          {{else}}
-          <heroImg src=""/>
-          {{/if}}
+          <heroImg src="{{ info.artwork_url }}" />
           <row>
             <buttonLockup id="play-btn">
               <badge src="resource://button-play" />

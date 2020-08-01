@@ -23,6 +23,11 @@ const PlayingNowPage = ATV.Page.create({
             current = it
           if (typeof current !== 'undefined')
             active_queue.push(it)
+
+          if ('artwork_url' in it)
+            it.artwork_url = TH.helpers.artworkUrl(it.artwork_url)
+          else
+            it.artwork_url = TH.helpers.assetUrl('img/album.png')
         }
 
         resolve({
@@ -122,9 +127,9 @@ const PlayingNowPage = ATV.Page.create({
   player: null,
   playerStateBadge(state) {
     if (state == 'play')
-      return '<badge src="' + TH.assetUrl('img/pause.png') + '" width="96" height="96" />'
+      return '<badge src="' + TH.asset_url('img/pause.png') + '" width="96" height="96" />'
     else
-      return '<badge src="' + TH.assetUrl('img/play.png') + '" width="96" height="96" />'
+      return '<badge src="' + TH.asset_url('img/play.png') + '" width="96" height="96" />'
   },
   queue: null
 })

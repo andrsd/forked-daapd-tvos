@@ -10,7 +10,7 @@
         {{#if artwork_url}}
         <img src="{{artworkUrl artwork_url}}" class="square" />
         {{else}}
-        <img src="" class="square"/>
+        <img src="{{assetUrl 'img/album.png' }}" class="square"/>
         {{/if}}
         <title>{{ name }}</title>
       </lockup>
@@ -29,7 +29,7 @@
         {{#if artwork_url}}
         <img src="{{artworkUrl artwork_url}}" class="square" />
         {{else}}
-        <img src="" class="square"/>
+        <img src="{{assetUrl 'img/album.png' }}" class="square"/>
         {{/if}}
         <title>{{ name }}</title>
         <subtitle>{{ artist }}</subtitle>
@@ -49,7 +49,7 @@
         {{#if artwork_url}}
         <img src="{{artworkUrl artwork_url}}" class="square" />
         {{else}}
-        <img src="" class="square"/>
+        <img src="{{assetUrl 'img/album.png' }}" class="square"/>
         {{/if}}
         <title>{{ title }}</title>
       </lockup>

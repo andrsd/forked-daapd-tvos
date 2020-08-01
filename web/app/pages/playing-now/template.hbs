@@ -4,11 +4,7 @@
         <section>
           {{#each queue}}
           <lockup style="padding: 20">
-            {{#if artwork_url}}
-            <img src="{{artworkUrl artwork_url}}" width="450" height="450" />
-            {{else}}
-            <img src="" width="450" height="450" />
-            {{/if}}
+            <img src="{{ artwork_url }}" width="450" height="450" contentsMode="aspectFit" aspectRatio="1:1" />
           </lockup>
           {{/each}}
         </section>
@@ -29,16 +25,16 @@
       </organizer>
       <row style="tv-interitem-spacing: 20; margin-left: 725">
         <buttonLockup id="prev-btn">
-          <badge src="{{asset_url 'img/prev.png'}}" width="96" height="96" />
+          <badge src="{{assetUrl 'img/prev.png'}}" width="96" height="96" />
         </buttonLockup>
         <buttonLockup id="play-btn">
           {{{ player_state_badge }}}
         </buttonLockup>
         <buttonLockup id="next-btn">
-          <badge src="{{asset_url 'img/next.png'}}" width="96" height="96" />
+          <badge src="{{assetUrl 'img/next.png'}}" width="96" height="96" />
         </buttonLockup>
         <buttonLockup id="output-btn" style="margin-left: 150">
-          <badge src="{{asset_url 'img/sources.png'}}" width="96" height="96" />
+          <badge src="{{assetUrl 'img/sources.png'}}" width="96" height="96" />
         </buttonLockup>
       </row>
   </divTemplate>
