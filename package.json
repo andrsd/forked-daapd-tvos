@@ -54,7 +54,7 @@
   },
   "dependencies": {
     "atvjs": "^0.2.9",
-    "fast-xml-parser": "^3.12.16",
+    "fast-xml-parser": "^3.17.4",
     "handlebars": "^4.7.6",
     "spotify-web-api-node": "^4.0.0",
     "string-strip-html": "^4.3.17"
