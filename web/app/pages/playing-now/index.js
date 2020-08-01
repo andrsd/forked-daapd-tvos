@@ -39,7 +39,11 @@ const PlayingNowPage = ATV.Page.create({
     doc
       .getElementById('prev-btn')
       .addEventListener('select', () => {
-        API.put(API.url.playerPreviousTrack())
+        API
+          .put(API.url.playerPreviousTrack())
+          .then(() => {
+            return true
+          })
       })
 
     doc
@@ -53,32 +57,39 @@ const PlayingNowPage = ATV.Page.create({
 
         promise
           .then(() => {
-            API.get(API.url.player ())
+            API
+              .get(API.url.player ())
               .then((xhr) => {
-                  this.player = xhr.response
-                  doc.getElementById('play-btn').innerHTML = this.playerStateBadge(this.player.state)
-              }, (xhr) => {
+                this.player = xhr.response
+                doc.getElementById('play-btn').innerHTML = this.playerStateBadge(this.player.state)
+                return true
               })
           }, () => {
+            return false
           })
       })
 
     doc
       .getElementById('next-btn')
       .addEventListener('select', () => {
-        API.put(API.url.playerNextTrack())
+        API
+          .put(API.url.playerNextTrack())
+          .then(() => {
+            return true
+          })
       })
 
     setInterval(() => {
-      API.get(API.url.player ())
+      API
+        .get(API.url.player ())
         .then((xhr) => {
-            doc
-              .getElementById('current-time')
-              .innerHTML = TH.helpers.formatTime(xhr.response.item_progress_ms)
-            doc
-              .getElementById('progress')
-              .setAttribute("value", xhr.response.item_progress_ms / xhr.response.item_length_ms)
-        }, (xhr) => {
+          doc
+            .getElementById('current-time')
+            .innerHTML = TH.helpers.formatTime(xhr.response.item_progress_ms)
+          doc
+            .getElementById('progress')
+            .setAttribute("value", xhr.response.item_progress_ms / xhr.response.item_length_ms)
+          return true
         })
     }, 1000)
 

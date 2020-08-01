@@ -110,6 +110,7 @@ const SearchPage = ATV.Page.create({
             .post(API.url.queueAddItems([item.uri]))
             .then(() => {
               ATV.Navigation.dismissModal()
+              return true
             })
         })
       doc

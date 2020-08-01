@@ -51,6 +51,7 @@ const ArtistAlbumsPage = ATV.Page.create({
             .post(API.url.queueAddItems([album.uri]))
             .then(() => {
               ATV.Navigation.dismissModal()
+              return true
             })
         })
       doc

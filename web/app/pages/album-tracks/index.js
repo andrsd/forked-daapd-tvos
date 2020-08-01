@@ -104,7 +104,6 @@ const AlbumTracksPage = ATV.Page.create({
         .then(() => {
           ATV.Navigation.clear()
           ATV.Navigation.navigateToMenuPage()
-          // ATV.Navigation.navigate('playing-now', {})
           return true
         })
     }
@@ -130,6 +129,7 @@ const AlbumTracksPage = ATV.Page.create({
             .post(API.url.queueAddItems([track.uri]))
             .then(() => {
               ATV.Navigation.dismissModal()
+              return true
             })
         })
     }
