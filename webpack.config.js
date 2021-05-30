@@ -23,7 +23,7 @@ const stats = {
 }
 
 module.exports = {
-  devtool: isProd ? '' : 'eval-source-map',
+  devtool: isProd ? false : 'eval-source-map',
   mode: isProd ? 'production' : 'development',
   entry: entry,
   output: output,
