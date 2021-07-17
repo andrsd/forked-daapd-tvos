@@ -30,12 +30,21 @@ const PlayingNowPage = ATV.Page.create({
             it.artwork_url = TH.helpers.assetUrl('img/album.png')
         }
 
-        resolve({
-          player: this.player,
-          current: current,
-          queue: active_queue,
-          player_state_badge: this.playerStateBadge(this.player.state)
-        })
+        if (active_queue.length > 0) {
+          resolve({
+            player: this.player,
+            current: current,
+            queue: active_queue,
+            player_state_badge: this.playerStateBadge(this.player.state)
+          })
+        }
+        else {
+          resolve({
+            player: { item_progress_ms: null, progress: 0, item_length_ms: null },
+            current: { title: "Not playing", artist: "", album: ""},
+            player_state_badge: this.playerStateBadge(this.player.state)
+          })
+        }
       }, (xhrs) => {
         reject()
       })
@@ -86,20 +95,10 @@ const PlayingNowPage = ATV.Page.create({
 
     setInterval(() => {
       API
-        .get(API.url.player ())
+        .get(API.url.queue())
         .then((xhr) => {
-          this.player = xhr.response
-          doc
-            .getElementById('current-time')
-            .innerHTML = TH.helpers.formatTime(this.player.item_progress_ms)
-          doc
-            .getElementById('progress')
-            .setAttribute("value", this.player.item_progress_ms / this.player.item_length_ms)
-          doc
-            .getElementById('play-btn')
-            .innerHTML = this.playerStateBadge(this.player.state)
-
-          if (this.queue)
+          this.queue = xhr.response.items
+          if (this.queue && this.queue.length > 0) {
             for (const item of this.queue) {
               if (item.id == this.player.item_id) {
                 doc
@@ -114,6 +113,54 @@ const PlayingNowPage = ATV.Page.create({
                 break
               }
             }
+          }
+          else {
+            doc
+              .getElementById('title')
+              .innerHTML = "Not playing"
+            doc
+              .getElementById('artist')
+              .innerHTML = ""
+            doc
+              .getElementById('album')
+              .innerHTML = ""
+
+          }
+          return true
+        })
+
+      API
+        .get(API.url.player ())
+        .then((xhr) => {
+          this.player = xhr.response
+          if (this.player.state == 'stop')
+          {
+            doc
+              .getElementById('current-time')
+              .innerHTML = ""
+            doc
+              .getElementById('progress')
+              .setAttribute("value", 0)
+            doc
+              .getElementById('total-time')
+              .innerHTML = ""
+          }
+          else
+          {
+            doc
+              .getElementById('current-time')
+              .innerHTML = TH.helpers.formatTime(this.player.item_progress_ms)
+            doc
+              .getElementById('progress')
+              .setAttribute("value", this.player.item_progress_ms / this.player.item_length_ms)
+            doc
+              .getElementById('total-time')
+              .innerHTML = TH.helpers.formatTime(this.player.item_length_ms)
+          }
+          doc
+            .getElementById('play-btn')
+            .innerHTML = this.playerStateBadge(this.player.state)
+
           return true
         })
     }, 1000)

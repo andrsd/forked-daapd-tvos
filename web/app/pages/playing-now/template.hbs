@@ -2,11 +2,17 @@
   <divTemplate>
       <shelf style="margin-left: 725">
         <section>
+          {{#if queue}}
           {{#each queue}}
           <lockup style="padding: 20">
             <img src="{{ artwork_url }}" width="450" height="450" contentsMode="aspectFit" aspectRatio="1:1" />
           </lockup>
           {{/each}}
+          {{else}}
+          <lockup style="padding: 20">
+            <img src="{{assetUrl 'img/album.png' }}" width="450" height="450" contentsMode="aspectFit" aspectRatio="1:1" />
+          </lockup>
+          {{/if}}
         </section>
       </shelf>
       <row style="tv-align: center">
