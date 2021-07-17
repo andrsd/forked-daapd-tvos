@@ -558,14 +558,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2020.08.01;
+				CURRENT_PROJECT_VERSION = 2021.07.17;
 				DEVELOPMENT_TEAM = Y8G529976F;
 				INFOPLIST_FILE = "daap-client/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2020.08.01;
+				MARKETING_VERSION = 2021.07.17;
 				PRODUCT_BUNDLE_IDENTIFIER = "name.andrs.tvos.daap-client";
 				PRODUCT_NAME = "forked-daapd";
 				SWIFT_VERSION = 5.0;
@@ -578,14 +578,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2020.08.01;
+				CURRENT_PROJECT_VERSION = 2021.07.17;
 				DEVELOPMENT_TEAM = Y8G529976F;
 				INFOPLIST_FILE = "daap-client/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2020.08.01;
+				MARKETING_VERSION = 2021.07.17;
 				PRODUCT_BUNDLE_IDENTIFIER = "name.andrs.tvos.daap-client";
 				PRODUCT_NAME = "forked-daapd";
 				SWIFT_VERSION = 5.0;
