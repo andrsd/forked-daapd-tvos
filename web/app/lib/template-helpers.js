@@ -42,14 +42,19 @@ const helpers = {
       return tracks + " tracks"
   },
   formatTime (t) {
-    var secs = Math.floor((t / 1000) % 60)
-    var minutes = Math.floor((t / (1000 * 60)) % 60)
-    var hours = Math.floor((t / (1000 * 60 * 60)) % 24)
+    if (t === null) {
+      return ""
+    }
+    else {
+      var secs = Math.floor((t / 1000) % 60)
+      var minutes = Math.floor((t / (1000 * 60)) % 60)
+      var hours = Math.floor((t / (1000 * 60 * 60)) % 24)
 
-    if (hours > 0)
-      return hours + ":" + ('0' + minutes).slice(-2) + ":" + ('0' + secs).slice(-2)
-    else
-      return ('0' + minutes).slice(-2) + ":" + ('0' + secs).slice(-2)
+      if (hours > 0)
+        return hours + ":" + ('0' + minutes).slice(-2) + ":" + ('0' + secs).slice(-2)
+      else
+        return ('0' + minutes).slice(-2) + ":" + ('0' + secs).slice(-2)
+    }
   }
 }
 
