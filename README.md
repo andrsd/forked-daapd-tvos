@@ -1,6 +1,6 @@
 # daap-client-tvos
 
-[![Build Status](https://travis-ci.org/andrsd/forked-daapd-tvos.svg?branch=master)](https://travis-ci.org/andrsd/forked-daapd-tvos)
+[![build](https://github.com/andrsd/forked-daapd-tvos/actions/workflows/build.yml/badge.svg)](https://github.com/andrsd/forked-daapd-tvos/actions/workflows/build.yml)
 [![codecov](https://codecov.io/gh/andrsd/forked-daapd-tvos/branch/master/graph/badge.svg)](https://codecov.io/gh/andrsd/forked-daapd-tvos)
 [![License](http://img.shields.io/:license-mit-blue.svg)](https://andrsd.mit-license.org/)
 
