@@ -5,7 +5,7 @@ var expect = require('chai').expect;
 
 describe('API', function () {
   describe('url', function () {
-    var base_url = 'http://10.0.0.1:3689'
+    var base_url = 'http://forked-daapd.local:3689'
     var base_api = `${base_url}/api`
     it('artists', function(done) {
       expect(API.url.artists()).to.equal(`${base_api}/library/artists`)
