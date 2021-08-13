@@ -1,6 +1,6 @@
 require('webpack')
 const path = require('path')
-const CopyPlugin = require('copy-webpack-plugin')
+const CopyWebpackPlugin = require('copy-webpack-plugin')
 
 const srcRoot = path.resolve(__dirname, 'web/app/')
 const distRoot = path.resolve(__dirname, 'web/dist/')
@@ -53,9 +53,11 @@ module.exports = {
     }]
   },
   plugins: [
-    new CopyPlugin([
-      { from: srcRoot + '/assets', to: distRoot + '/assets' }
-    ])
+    new CopyWebpackPlugin({
+      patterns: [
+        { from: srcRoot + '/assets', to: distRoot + '/assets' }
+      ]
+    })
   ],
   devServer: {
     contentBase: distRoot,
